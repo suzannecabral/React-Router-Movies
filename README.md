@@ -73,5 +73,5 @@ If you have completed Parts 1 & 2 feel free to move on to these stretch goals.
 
 ## Submission Format
 
-* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
-* [ ] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
+* [x] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
+* [x] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR

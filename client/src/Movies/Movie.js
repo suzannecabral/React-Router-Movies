@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams, Route, useRouteMatch } from 'react-router-dom'
+
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
 
-  let id = 1;
+  // const { movies } = props
+  const { id } = useParams()
+  //finds the ID from the url
+  //matches param from route
+  const { url, path } = useRouteMatch
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
+
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
+      // .get(`http://localhost:5000/api/movies/1`) // Study this endpoint with Postman
       .then(response => {
+    
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
+
+        console.log(response.data)
+        setMovie(response.data)
       })
       .catch(error => {
         console.error(error);
@@ -29,6 +41,11 @@ export default function Movie(props) {
   }
 
   const { title, director, metascore, stars } = movie;
+  console.log("Rendered Movie Component:")
+  // console.log('movie url', url)
+  // console.log('movie path', path)
+  console.log('movie id', movie.id)
+  console.log(movie)
 
   return (
     <div className="save-wrapper">

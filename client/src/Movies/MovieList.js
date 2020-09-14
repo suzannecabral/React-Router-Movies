@@ -24,7 +24,6 @@ function MovieDetails(props) {
       <div className="movie-director">
       Director: <em>{director}</em>
       </div>
-      <div>test ID: {id}</div>
       <div className="movie-metascore">
       Metascore: <strong>{metascore}</strong>
       </div>

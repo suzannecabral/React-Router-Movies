@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams, Route, useRouteMatch } from 'react-router-dom'
+
 
 export default function Movie(props) {
+
   const [movie, setMovie] = useState();
 
-  let id = 1;
+  const { movies } = props
+  const { id } = useParams()
+  const { url, path } = useRouteMatch
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
+  console.log("Rendered Movie Component:")
+  console.log('movie url', url)
+  console.log('movie path', path)
+  console.log('movie id', id)
+
+  // // find inside 'items' the 'item' with the given `id`
+  // const item = items.find(it => {
+  //   return it.id == id
+  // }) || {}
+
 
   useEffect(() => {
     axios
@@ -14,7 +29,7 @@ export default function Movie(props) {
     
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
-        console.log("This is the Movie component:")
+
         console.log(response)
       })
       .catch(error => {

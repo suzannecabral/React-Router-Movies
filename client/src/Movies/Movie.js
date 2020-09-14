@@ -4,30 +4,28 @@ import { useParams, Route, useRouteMatch } from 'react-router-dom'
 
 
 export default function Movie(props) {
-
   const [movie, setMovie] = useState();
 
-  const { movies } = props
+  // const { movies } = props
   const { id } = useParams()
+  //finds the ID from the url
+  //matches param from route
   const { url, path } = useRouteMatch
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
-  console.log("Rendered Movie Component:")
-  console.log('movie url', url)
-  console.log('movie path', path)
-  console.log('movie id', id)
+
 
   // find inside 'items' the 'item' with the given `id`
-  const thisMovie = movies.find(item => {
-    return item.id === id
-  }) || {}
+  // const thisMovie = movies.find(item => {
+  //   return item.id === id
+  // }) || {}
 
   // console.log('This Movie', thisMovie)
 
 
   useEffect(() => {
     axios
-      // .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
-      .get(`http://localhost:5000/api/movies/1`) // Study this endpoint with Postman
+      .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
+      // .get(`http://localhost:5000/api/movies/1`) // Study this endpoint with Postman
       .then(response => {
     
         // Study this response with a breakpoint or log statements
@@ -51,6 +49,11 @@ export default function Movie(props) {
   }
 
   const { title, director, metascore, stars } = movie;
+  console.log("Rendered Movie Component:")
+  // console.log('movie url', url)
+  // console.log('movie path', path)
+  console.log('movie id', movie.id)
+  console.log(movie)
 
   return (
     <div className="save-wrapper">

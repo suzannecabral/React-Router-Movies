@@ -31,12 +31,33 @@ export default function App () {
     // This is stretch. Prevent the same movie from being "saved" more than once
   };
 
-
+    console.log("This is the movies list:")
+    console.log(movieList)
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
       <div>
-        
+        <ul>
+          <Link to='/'>
+            <li>Home</li>
+          </Link>
+          <Link to='/movie-list/'>
+            <li>Movie</li>
+          </Link>
+        </ul>
+
+
+        <Switch>
+          <Route path='/'>
+            <Movie />
+          </Route>
+          <Route path='/movie-list/'>
+            <MovieList movies={ movieList } />
+          </Route>
+        </Switch>
+
+
+
       </div>
     </div>
   );

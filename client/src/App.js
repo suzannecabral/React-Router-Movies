@@ -14,6 +14,8 @@ export default function App () {
         .then(response => {
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
+          // console.log(response.data)
+          setMovieList(response.data)
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -26,6 +28,7 @@ export default function App () {
     // This is stretch. Prevent the same movie from being "saved" more than once
   };
 
+  
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />

@@ -11,8 +11,11 @@ export default function Movie(props) {
     axios
       .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
       .then(response => {
+    
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
+        console.log("This is the Movie component:")
+        console.log(response)
       })
       .catch(error => {
         console.error(error);

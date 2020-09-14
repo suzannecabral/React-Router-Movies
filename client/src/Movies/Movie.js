@@ -16,21 +16,25 @@ export default function Movie(props) {
   console.log('movie path', path)
   console.log('movie id', id)
 
-  // // find inside 'items' the 'item' with the given `id`
-  // const item = items.find(it => {
-  //   return it.id == id
-  // }) || {}
+  // find inside 'items' the 'item' with the given `id`
+  const thisMovie = movies.find(item => {
+    return item.id === id
+  }) || {}
+
+  // console.log('This Movie', thisMovie)
 
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
+      // .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
+      .get(`http://localhost:5000/api/movies/1`) // Study this endpoint with Postman
       .then(response => {
     
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
 
-        console.log(response)
+        console.log(response.data)
+        setMovie(response.data)
       })
       .catch(error => {
         console.error(error);

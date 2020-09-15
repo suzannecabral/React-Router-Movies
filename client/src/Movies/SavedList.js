@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 
 export default function SavedList(props) {
-  
+  // props: an array of movies
+  // add each whole movie to the savedList
   
   
   return (

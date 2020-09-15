@@ -4,14 +4,17 @@ import Movie from './Movie'
 import {Link} from 'react-router-dom'
 
 export default function MovieList(props) {
+  const { addToSavedList } = props
+
   console.log('MovieList.js: ', props)
+  console.log('props.movies', props.movies)
   console.log("Rendered Movie List")
   return (
     <div className="movie-list">
       {props.movies.map(movie => (
         // <MovieDetails key={movie.id} movie={movie} />
       <Link to={`/movies/${movie.id}`}>
-        <MovieCard movie={movie} />
+        <MovieCard addToSavedList={addToSavedList} movie={movie} />
       </Link>
       ))}
     </div>

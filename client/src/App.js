@@ -11,7 +11,7 @@ export default function App () {
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
-    const getMovies = () => {
+    
       axios
         .get('http://localhost:5000/api/movies') // Study this endpoint with Postman
         .then(response => {
@@ -19,31 +19,44 @@ export default function App () {
           // and set the response data as the 'movieList' slice of state
           // console.log(response.data)
           setMovieList(response.data)
+          console.log(response.data)
         })
         .catch(error => {
           console.error('Server Error', error);
         });
-    }
-    getMovies();
   }, []);
+
+  function matchMovie(id,arr){
+    const foundMovies = arr.filter((movie)=>{
+     return movie.id === id
+    })
+    return foundMovies[0]
+
+  }
 
   const addToSavedList = id => {
     // This is stretch. Prevent the same movie from being "saved" more than once
-    setSaved([...saved, id])
+
+
+    
+    //find the object with the id rather than passing the id
+    //pass in the actual object
+    setSaved([...saved, matchMovie(id,movieList)])
+    // ^^^ this is important
   };
 
-    console.log("This is the movies list:")
-    console.log(movieList)
-    console.log()
+    // console.log("This is the movies list:")
+    // console.log(movieList)
+    // console.log()
   return (
     <div>
       <SavedList list={ saved } />
       <div>
         <Route path='/movies/:id'>
-         <Movie setSaved={setSaved} movies={movieList}/>
+         <Movie addToSavedList={addToSavedList} movies={movieList}/>
         </Route>
         <Route exact path='/'>
-         <MovieList movies={movieList} />
+         <MovieList addToSavedList={addToSavedList} movies={movieList} />
         </Route>
 
       </div>

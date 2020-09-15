@@ -2,8 +2,9 @@ import React from 'react';
 
 export default function MovieCard (props) {
   const { title, director, metascore, stars, id } = props.movie;
-
-
+  const { addToSavedList } = props
+  console.log('Movie Card Props', props)
+  console.log(stars)
 
   
   return (
@@ -24,7 +25,7 @@ export default function MovieCard (props) {
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div> 
+      <div className="save-button" onClick={()=>addToSavedList(id)} >Save</div> 
     </div>
   )
 }

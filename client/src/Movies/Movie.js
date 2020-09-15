@@ -6,6 +6,7 @@ import { useParams, Route, useRouteMatch } from 'react-router-dom'
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
+  const { addToSavedList } = props
 
   // const { movies } = props
   const { id } = useParams()
@@ -24,7 +25,7 @@ export default function Movie(props) {
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
 
-        console.log(response.data)
+        console.log('Movie.JS:', response.data)
         setMovie(response.data)
       })
       .catch(error => {
@@ -49,7 +50,7 @@ export default function Movie(props) {
   console.log(movie)
 
   return (
-    <MovieCard movie={movie} />
+    <MovieCard addToSavedList={addToSavedList} movie={movie} />
   ) 
     // <div className="save-wrapper">
     //    <div className="movie-card">
